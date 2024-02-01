@@ -7,7 +7,7 @@ using ToDo.Web.Models;
 
 namespace ToDo.Models
 {
-    public class Status:BaseModel
+    public class Priority:BaseModel
     {
 
     }

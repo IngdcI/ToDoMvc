@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using ToDo.Web.Models;
 
-namespace ToDo.Web.Controllers
+namespace ToDo.Controllers
 {
     public class HomeController : Controller
     {

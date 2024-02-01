@@ -7,8 +7,8 @@ using ToDo.Web.Models;
 
 namespace ToDo.Models
 {
-    public class Status:BaseModel
+    public class Tag:BaseModel
     {
-
+        //  public virtual ICollection<Todo> Todos { get; set; }
     }
 }

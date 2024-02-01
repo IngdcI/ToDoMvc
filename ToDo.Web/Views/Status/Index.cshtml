@@ -1,6 +1,63 @@
 ﻿@model List<Status>
 
-    @foreach(var item in Model)
+@if (TempData["Success"] != null)
 {
-   <h1>@item.Id-@item.Name</h1>
+    <div class="alert alert-success"> @TempData["Success"]</div>
+
 }
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger"> @TempData["error"]</div>
+
+}
+
+<div class="card">
+    <div id="divHeader" class="card-header bg-warning text-center bg-gradient">DurumListesi</div>
+    <div id="divCardBody" class="card-body">
+        <div class="text-end mb3">
+            <a asp-controller="Status" asp-action="Add" class="btn btn-primary btn-lg">Ekle</a>
+        </div>
+        
+        <table class="table table-bordered table-striped table-hover">
+
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ad</th>
+                    <th>Oluşturulma Tarihi</th>
+                    <th>İşlemler</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.DateCreated</td>
+                        <td><a asp-controller="Status" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('silmek istediğinize emin misiniz ?')">Sil</a> <a href="#" class="btn btn-success btn-sm">Düzenle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card-footer text-muted">
+    "Toplam Kayıt Sayısı : "@Model.Count"
+</div>
+
+@section Scripts
+{
+    <script>
+        $(".alert").slideUp(1).slideDown(1000).slideUp();
+
+        $("#divHeader").click(function () {
+            $("#divCardBody").toggle(1500, "swing");
+        })
+    </script>
+}
+
+
